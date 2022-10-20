@@ -54,6 +54,23 @@
             border-radius: 50px;
 
         }
+        .inicio{
+         display: none;
+
+
+        }
+       
+        #cadastro {
+            background-color: rgb(3, 15, 126);
+            text-align: center;
+
+        }
+        .cad {
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: whitesmoke;
+          
+        }
 
     </style>
 
@@ -61,7 +78,22 @@
 
 <body>
     <link href="css/style_fonte.css" rel="stylesheet">
-    <div id="inicio">
+    <div id="cadastro" class="cadastro">
+        <h2 id="cad" class="cad">Cadastrar</h2>
+       
+        <input type="text" id="nome" class="input" name="nome" placeholder="Nome">
+        <input type="text" id="usuario" class="input" name="usuario" placeholder="Usuario">
+        <form method="post" action="" name="frmEnvia">
+        <input type="text" id="email" class="input" name="email" placeholder="Email">
+    </form>
+        <input type="text" id="senha" class="input" name="senha" placeholder="Senha">
+        <input type="text" id="confirm" class="input" name="confirm" placeholder="Confirmar senha">
+        <button onclick="cadastrar();" id="botao">Cadastrar </button>
+
+
+
+
+    <div id="inicio" class="inicio">
         <h2 id="titulo">TO DO LIST</h2>
 
         <input type="text" id="texto" class="input" placeholder="Eu preciso.....">
@@ -69,13 +101,73 @@
 
     </div>
 
-    <div id="tarefas">
+    <div id="tarefas" class="inicio">
         <br>
     </div>
 
 
 
     <script>
+        function cadastrar() {
+const nome = document.getElementById("nome").value;
+const usuario = document.getElementById("usuario").value;
+const email = document.getElementById("email").value;
+const senha = document.getElementById("senha").value;
+const confirm = document.getElementById("confirm").value;
+
+if(nome==""){
+alert("Informe o seu nome"); 
+
+
+}
+
+else if(usuario==""){
+alert("Informe um usuario"); 
+
+
+}
+
+else if(email==""){
+alert("Informe um email"); 
+
+
+}
+else if(senha==""){
+alert("Informe uma senha"); 
+
+
+}
+else if(confirm==""){
+alert("Confirme sua senha"); 
+
+
+}
+
+else if(senha!=confirm){
+alert("senhas diferentes"); 
+
+
+}
+
+else if(usuario.length >10){
+alert("Usuário deve possuir menos que 10 caracteres"); 
+
+
+}
+else if(nome.length <=10){
+alert("O nome deve ser maior que 10 letras"); 
+
+
+}
+else if( document.forms[0].email.value.indexOf('@')==-1 
+     || document.forms[0].email.value.indexOf('.')==-1 )
+	{
+	  alert( "Por favor, informe um E-MAIL válido!" );
+
+	}
+    
+
+    }
 
         function adicionar() {
             var cont=1;
