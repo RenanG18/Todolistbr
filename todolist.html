@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      
+        #inicio {
+            background-color: rgb(3, 15, 126);
+            text-align: center;
+
+        }
+
+        #titulo {
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: whitesmoke;
+          
+        }
+
+        #input {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        }
+
+        #tarefas {
+            background-color: blue;
+            color: white;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+        }
+
+        #botao {
+        border-radius: 10px;
+         width: 20%;
+	     padding: 4px;
+            background-color: rgb(9, 178, 184);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+       
+        }
+
+        .itens {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            padding: 10px; 
+        }
+
+        .input {
+            width: 40%;
+            margin: 0 auto;
+            padding: 6px;
+            border: none;
+            margin-bottom: 10px;
+            border-radius: 50px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <link href="css/style_fonte.css" rel="stylesheet">
+    <div id="inicio">
+        <h2 id="titulo">TO DO LIST</h2>
+
+        <input type="text" id="texto" class="input" placeholder="Eu preciso.....">
+        <button onclick="adicionar();" id="botao">Adicionar tarefa </button>
+
+    </div>
+
+    <div id="tarefas">
+        <br>
+    </div>
+
+
+
+    <script>
+
+        function adicionar() {
+            var cont=1;
+            var conteudo = document.getElementById("texto").value;
+            if(conteudo!=""){
+            var novoelemento = document.createTextNode(conteudo);
+            var divNova = document.createElement('div');
+            divNova.className = 'itens';
+            var botao = document.createElement('button');
+            var botaoeditar = document.createElement('button');
+            var check = document.createElement('input');
+            check.setAttribute("type", "checkbox");
+            botao.innerHTML = "X";
+            botaoeditar.innerHTML = "Recriar";
+
+            botaoeditar.addEventListener("click", function () {
+                document.getElementById('texto').value = conteudo;
+
+                divNova.remove();
+
+            })
+            botao.addEventListener("click", function () {
+                divNova.remove();
+
+            })
+            
+            divNova.appendChild(check);
+            divNova.appendChild(novoelemento);
+            divNova.appendChild(botaoeditar);
+            divNova.appendChild(botao);
+            document.getElementById('tarefas').appendChild(divNova);
+
+
+
+            document.getElementById("texto").value = "";
+            botaoeditar.style.borderRadius = "10px";
+            botaoeditar.style.backgroundColor = "blue";
+            botao.style.borderRadius = "10px";
+            botao.style.backgroundColor = "red";
+            botaoeditar.style.color = "white";
+            
+            check.addEventListener("change", function () {
+                
+                if (cont==1){
+                divNova.style.backgroundColor="Green";
+                cont=2;
+                }
+                else if (cont==2){
+                divNova.style.backgroundColor="blue" ;
+                cont=1;
+                }
+               
+                
+            })
+
+
+        }
+
+    }
+               
+    </script>
+</body>
+</html>
