@@ -91,16 +91,21 @@
         <button onclick="cadastrar();" id="botao">Cadastrar </button>
 
 
-
+</div>
 
     <div id="inicio" class="inicio">
+        
         <h2 id="titulo">TO DO LIST</h2>
 
         <input type="text" id="texto" class="input" placeholder="Eu preciso.....">
         <button onclick="adicionar();" id="botao">Adicionar tarefa </button>
 
     </div>
+<div id="login">
 
+
+
+</div>
     <div id="tarefas" class="inicio">
         <br>
     </div>
@@ -165,6 +170,21 @@ else if( document.forms[0].email.value.indexOf('@')==-1
 	  alert( "Por favor, informe um E-MAIL válido!" );
 
 	}
+
+else {
+var cadastro = document.getElementById("cadastro");
+cadastro.style.display = "none";
+var inicio = document.getElementById("inicio");
+inicio.style.display = "block";
+var divtarefa = document.getElementById("tarefas");
+tarefas.style.display = "block";
+var login = document.getElementById("login");
+login.appendChild(nome);
+login.style.display = "block";
+login.style.backgroundColor="blue";
+}
+
+    
     
 
     }
@@ -182,6 +202,7 @@ else if( document.forms[0].email.value.indexOf('@')==-1
             check.setAttribute("type", "checkbox");
             botao.innerHTML = "X";
             botaoeditar.innerHTML = "Recriar";
+    
 
             botaoeditar.addEventListener("click", function () {
                 document.getElementById('texto').value = conteudo;
