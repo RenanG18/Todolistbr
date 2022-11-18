@@ -6,7 +6,7 @@
     <style>
       
         #inicio {
-            background-color: rgb(3, 15, 126);
+            background-color: rgb(67, 83, 221);
             text-align: center;
 
         }
@@ -24,9 +24,10 @@
         }
 
         #tarefas {
-            background-color: blue;
+            background-color: rgb(85, 98, 219);
             color: white;
             font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+            box-shadow: 10px 10px;
         }
 
         #botao {
@@ -56,12 +57,13 @@
         }
         .inicio{
          display: none;
+         color: #2bccc4;
 
 
         }
        
         #cadastro {
-            background-color: rgb(3, 15, 126);
+            background-color: rgb(44, 58, 187);
             text-align: center;
 
         }
@@ -71,6 +73,24 @@
             color: whitesmoke;
           
         }
+        .parag {
+            text-align: left;
+        }
+
+
+        #cad {
+  color: #2bccc4;
+}
+
+#login {
+    box-shadow: 10px 10px lightblue;
+    text-align: center;
+}
+  
+#titulo{
+    color: #2bccc4;
+
+}
 
     </style>
 
@@ -79,34 +99,40 @@
 <body>
     <link href="css/style_fonte.css" rel="stylesheet">
     <div id="cadastro" class="cadastro">
-        <h2 id="cad" class="cad">Cadastrar</h2>
+        <h1 id="cad" class="cad">CADASTRO</h1>
        
-        <input type="text" id="nome" class="input" name="nome" placeholder="Nome">
-        <input type="text" id="usuario" class="input" name="usuario" placeholder="Usuario">
+        <input type="text" id="nome" class="input" name="nome" placeholder="Preencha o nome">
+        <br>
+        <input type="text" id="usuario" class="input" name="usuario" placeholder="Usuário">
+        <br>
         <form method="post" action="" name="frmEnvia">
         <input type="text" id="email" class="input" name="email" placeholder="Email">
-    </form>
+        <br>
+        </form>
         <input type="text" id="senha" class="input" name="senha" placeholder="Senha">
+        <br>
         <input type="text" id="confirm" class="input" name="confirm" placeholder="Confirmar senha">
+        <br>
         <button onclick="cadastrar();" id="botao">Cadastrar </button>
 
-
-</div>
+    </div>
 
     <div id="inicio" class="inicio">
         
-        <h2 id="titulo">TO DO LIST</h2>
+        <h2 id="titulo" class="titulo">TO DO LIST</h2>
+        <br>
 
         <input type="text" id="texto" class="input" placeholder="Eu preciso.....">
         <button onclick="adicionar();" id="botao">Adicionar tarefa </button>
+        <button onclick="mostrar();" id="botao">Mostrar dados</button>
 
     </div>
-<div id="login">
+    <div id="login">
 
 
 
-</div>
-    <div id="tarefas" class="inicio">
+    </div>
+    <div id="tarefas" class="inicio" >
         <br>
     </div>
 
@@ -114,45 +140,45 @@
 
     <script>
         function cadastrar() {
-const nome = document.getElementById("nome").value;
-const usuario = document.getElementById("usuario").value;
-const email = document.getElementById("email").value;
-const senha = document.getElementById("senha").value;
-const confirm = document.getElementById("confirm").value;
+            const nome = document.getElementById("nome").value;
+            const usuario = document.getElementById("usuario").value;
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+            const confirm = document.getElementById("confirm").value;
 
-if(nome==""){
-alert("Informe o seu nome"); 
-
-
-}
-
-else if(usuario==""){
-alert("Informe um usuario"); 
+            if(nome==""){
+            alert("Informe o seu nome"); 
 
 
-}
+            }
 
-else if(email==""){
-alert("Informe um email"); 
-
-
-}
-else if(senha==""){
-alert("Informe uma senha"); 
+            else if(usuario==""){
+            alert("Informe um usuario"); 
 
 
-}
-else if(confirm==""){
-alert("Confirme sua senha"); 
+            }
+
+            else if(email==""){
+            alert("Informe um email"); 
 
 
-}
+            }
+            else if(senha==""){
+            alert("Informe uma senha"); 
 
-else if(senha!=confirm){
-alert("senhas diferentes"); 
+
+            }
+            else if(confirm==""){
+            alert("Confirme sua senha"); 
 
 
-}
+            }
+
+            else if(senha!=confirm){
+            alert("senhas diferentes"); 
+
+
+            }
 
 else if(usuario.length >10){
 alert("Usuário deve possuir menos que 10 caracteres"); 
@@ -165,7 +191,7 @@ alert("O nome deve ser maior que 10 letras");
 
 }
 else if( document.forms[0].email.value.indexOf('@')==-1 
-     || document.forms[0].email.value.indexOf('.')==-1 )
+     || document.forms[0].email.value.indexOf('.com')==-1 )
 	{
 	  alert( "Por favor, informe um E-MAIL válido!" );
 
@@ -178,18 +204,31 @@ var inicio = document.getElementById("inicio");
 inicio.style.display = "block";
 var divtarefa = document.getElementById("tarefas");
 tarefas.style.display = "block";
-var login = document.getElementById("login");
-login.appendChild(nome);
-login.style.display = "block";
-login.style.backgroundColor="blue";
+
 }
 
-    
+  
     
 
     }
+    function mostrar(){
+        var paragrafo = document.createElement('div');
+        paragrafo.innerHTML = "Nome informado: " + document.getElementsByTagName('input')[0].value +"<br>"+
+            "Usuário informado: " + document.getElementsByTagName('input')[1].value +"<br>" +
+            "Email informado: " + document.getElementsByTagName('input')[2].value ;
+            var login = document.getElementById("login");
+             login.appendChild(paragrafo);
+             login.style.display = "block";
+             login.style.backgroundColor="rgb(85, 98, 219)";
+            paragrafo.style.backgroundColor="rgb(85, 98, 219)";
+            document.getElementsByTagName("button")[2].style.display = "none";
 
-        function adicionar() {
+
+
+
+    }
+
+    function adicionar() {
             var cont=1;
             var conteudo = document.getElementById("texto").value;
             if(conteudo!=""){
@@ -202,6 +241,7 @@ login.style.backgroundColor="blue";
             check.setAttribute("type", "checkbox");
             botao.innerHTML = "X";
             botaoeditar.innerHTML = "Recriar";
+           
     
 
             botaoeditar.addEventListener("click", function () {
@@ -215,11 +255,18 @@ login.style.backgroundColor="blue";
 
             })
             
-            divNova.appendChild(check);
+            
+           
+
+           
+            
+            
+             divNova.appendChild(check);
             divNova.appendChild(novoelemento);
             divNova.appendChild(botaoeditar);
             divNova.appendChild(botao);
             document.getElementById('tarefas').appendChild(divNova);
+
 
 
 
@@ -233,11 +280,11 @@ login.style.backgroundColor="blue";
             check.addEventListener("change", function () {
                 
                 if (cont==1){
-                divNova.style.backgroundColor="Green";
+                divNova.style.backgroundColor="#2bccc4";
                 cont=2;
                 }
                 else if (cont==2){
-                divNova.style.backgroundColor="blue" ;
+                divNova.style.backgroundColor="rgb(85, 98, 219)" ;
                 cont=1;
                 }
                
